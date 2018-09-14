@@ -1,0 +1,10 @@
+{% extends './base.html' %}
+{% block content %}
+<form method="post">
+	{% csrf_token %}
+	{{form.as_p}}
+	<input type="submit" name="submit">
+</form><br>
+<a href="{% url 'forgot_password' %}">forgot password</a><br>
+<a href="{% url 'Resend_Acc_activation' %}">Resend Account Activation link</a>
+{% endblock %}

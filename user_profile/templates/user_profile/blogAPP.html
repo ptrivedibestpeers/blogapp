@@ -1,0 +1,12 @@
+{% extends './base.html' %}
+{% block content %}
+{% include './blogbase.html' %}
+<h4>Hi {{ username }}</h4>
+{% for blogs in blog %}
+<div class="container">
+	{{blogs.publisher}}::{{blogs.title}}
+	<small style="color: #888">{{ blogs.create_date.date }}</small><br>
+	<button type="button" class="btn btn-link"><a href="{% url 'view_blog' blogs.id%}">View<a></button><br>
+</div>
+{%endfor%}
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends './base.html' %}
+{% load static %}
+{% block content %}
+{% include './blogbase.html' %}
+<div class="container">
+	<h4>{{blog.publisher}}::{{blog.title}}</h4>
+	{{blog.Description}}<br>
+	<input type="button" class="btn btn-primary" name="like" id="like" value="{{ like_bool }}">
+</div>
+{% endblock %} 
+
+{% block javascript %}
+<script src="{% static 'js/csrf.js' %}" ></script>
+<script type="text/javascript">
+	$('#like').on('click',function(){
+		console.log("form submitted!")
+		debugger
+		if ($(this).val() =="Like") {
+			$(this).val('Unlike');
+		}
+		else {
+			$(this).val('Like');
+		}
+		$.ajax({
+			type:'POST',
+			url:"{% url 'like' %}",
+			data:{'blog_id' : {{blog.id}}},
+			success: function(response) {
+				console.log("You have successfully liked");
+				
+			}
+		});
+	})
+</script>
+{% endblock %}

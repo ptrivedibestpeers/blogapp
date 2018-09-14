@@ -1,0 +1,10 @@
+{% extends 'user_profile/base.html'%}
+{% block content %}
+{{error_message}}
+<form method="post" action="{% url 'Resend_Acc_activation' %}">
+	{% csrf_token %}
+	<label for="email">Registered Email :</label>
+	<input type="Email" name="email"><br>
+	<input type="submit" name="submit">
+</form>
+{% endblock %}

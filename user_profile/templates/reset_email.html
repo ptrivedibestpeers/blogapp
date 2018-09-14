@@ -1,0 +1,6 @@
+{% autoescape off %}
+Hi {{ user.username }}, 
+Please click on the link to your blogit account password change password,
+
+http://{{ domain }}{% url 'reset_password' uidb64=uid token=token %}
+{% endautoescape %}

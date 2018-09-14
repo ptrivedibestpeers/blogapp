@@ -1,0 +1,13 @@
+{% extends './base.html' %}
+{% block content %}
+{% include './blogbase.html' %}
+<h3>Write a new blog</h3>
+<form method="POST" action="{% url 'new_post' %}" novalidate>
+	{% csrf_token %}
+	<label for="title"> Title : </label>
+	<input type="text" name="title" as_crispy_field><br>
+	<label for="description" >Description : </label>
+	<textarea name="description" rows="10" cols="60" ></textarea><br>
+	<input type="submit" name="Post" class="btn btn-success">
+</form>
+{% endblock %}

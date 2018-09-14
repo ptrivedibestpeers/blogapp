@@ -1,0 +1,15 @@
+{% extends './base.html' %}
+{% block content %}
+{% include './blogbase.html' %}
+<h4>Your Previous Post on Bloggit are</h4>
+{% for blogs in blog %}
+<div class="container">
+	<br>TITLE :: {{blogs.title}}<br>
+	<div class="btn-group">
+	<button type="button" class="btn btn-link"><a href="{% url 'view_blog' blogs.id%}">View<a></button>
+	<button type="button" class="btn btn-link"><a href="{% url 'edit_blog' blogs.id%}">Edit</a></button>
+	<button type="button" class="btn btn-link"><a href="{% url 'delete_blog' blogs.id%}">Delete</a></button>
+</div>
+</div>
+{%endfor%}
+{% endblock %}
